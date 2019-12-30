@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-const ToDo = props => {
+type ToDoProps = {
+  checked: boolean;
+  removeItem: () => void;
+  setChecked: (checked: boolean) => void;
+  text: string;
+}
+
+const ToDo = (props: ToDoProps) => {
   const { checked, removeItem, setChecked, text } = props;
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setChecked(e.target.checked);
   };
   return (

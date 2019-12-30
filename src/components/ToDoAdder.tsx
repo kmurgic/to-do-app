@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-const ToDoAdder = props => {
+type ToDoAdderProps = {
+  addToDo: (newToDo: string) => void;
+}
+
+const ToDoAdder = (props: ToDoAdderProps) => {
   const { addToDo } = props;
   const [newToDo, setNewToDo] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setNewToDo(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (!newToDo) return;
     addToDo(newToDo);
